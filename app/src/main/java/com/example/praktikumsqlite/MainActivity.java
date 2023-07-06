@@ -56,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 String isian_nim = edNim.getText().toString();
                 String isian_noHp = edNoHp.getText().toString();
 
-                if(isian_nama.isEmpty() || isian_nim.isEmpty() || isian_noHp.isEmpty()){
+                mhsList = dbase.list();
+                if  (mhsList.size() >= 5) {
+                    Toast.makeText(getApplicationContext(), "Data tidak boleh melebihi 5!", Toast.LENGTH_SHORT).show();
+                } else {if(isian_nama.isEmpty() || isian_nim.isEmpty() || isian_noHp.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Isian Masih Kosong", Toast.LENGTH_SHORT).show();
                 }else{
                     //mhsList.add(new MhsModel(-1,isian_nama,isian_nim,isian_noHp));
@@ -81,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Data Gagal Disimpan", Toast.LENGTH_SHORT)
                                 .show();
                     }
+
+                }
+
+
 
                     //intent_list.putParcelableArrayListExtra("mhsList",mhsList);
                     //startActivity(intent_list);
